@@ -1,0 +1,42 @@
+<mat-sidenav-container class="sidenav-container">
+  <mat-sidenav
+    #drawer
+    class="sidenav"
+    fixedInViewport
+    [attr.role]="(isHandset$ | async) ? 'dialog' : 'navigation'"
+    [mode]="(isHandset$ | async) ? 'over' : 'side'"
+    [opened]="(isHandset$ | async) === false"
+  >
+    <mat-toolbar>Tarea
+      <img src="https://cdn.icon-icons.com/icons2/2699/PNG/512/angular_logo_icon_169595.png" alt="" width="50px">s</mat-toolbar>
+    <mat-nav-list>
+      <a mat-list-item routerLink="menu">Menu</a>
+      <a mat-list-item routerLink="vista">Vista</a>
+      <a mat-list-item routerLink="login" *ngIf="!usuariologueado">Login</a>
+      <a mat-list-item routerLink="register" *ngIf="!usuariologueado">Register</a>
+      <a
+        mat-list-item
+        routerLink="login"
+        *ngIf="usuariologueado"
+        (click)="logout()"
+        >Logout</a
+      >
+    </mat-nav-list>
+  </mat-sidenav>
+  <mat-sidenav-content>
+    <mat-toolbar color="primary">
+      <button
+        type="button"
+        aria-label="Toggle sidenav"
+        mat-icon-button
+        (click)="drawer.toggle()"
+        *ngIf="isHandset$ | async"
+      >
+        <mat-icon aria-label="Side nav toggle icon">menu</mat-icon>
+      </button>
+      <span>Administrador</span>
+    </mat-toolbar>
+    <!-- Add Content Here -->
+    <router-outlet></router-outlet>
+  </mat-sidenav-content>
+</mat-sidenav-container>

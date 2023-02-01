@@ -1,0 +1,21 @@
+<h1 mat-dialog-title>{{ isAddMode ? "Agregar" : "Editar" }} Usuario</h1>
+<div mat-dialog-content>
+  <mat-form-field appearance="fill" class="w-100">
+    <label for="nombre" class="w-100 color-white"> Nombre</label>
+    <input matInput [(ngModel)]="user.Nombre" name="nombre" class="w-100 rounded" />
+  </mat-form-field>
+
+  <mat-form-field appearance="fill" class="w-100">
+    <label for="apellido" class="w-100 color-white"> Apellido</label>
+    <input matInput [(ngModel)]="user.Apellido" name="apellido" class="w-100 rounded" />
+  </mat-form-field>
+
+  <mat-form-field appearance="fill" class="w-100">
+    <label for="correo" class="w-100 color-white"> Correo</label>
+    <input matInput [(ngModel)]="user.Correo" name="correo" class="w-100 rounded" />
+  </mat-form-field>
+</div>
+<div mat-dialog-actions class="w-100 justify-content-center">
+  <button mat-raised-button color="warn" class="mx-2" (click)="onNoClick()">Cancelar</button>
+  <button mat-raised-button color="accent" class="mx-2" [mat-dialog-close]="user" cdkFocusInitial>Guardar</button>
+</div>
